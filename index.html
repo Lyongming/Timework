@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			button {
+				width: 25px;
+				height: 25px;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+		//fourOne
+		document.write('<h1>第一题</h1>')
+		var str = 'abc.def';
+		var strS = str.split('.');
+		var num = '';
+		for(let i=1;i<=strS.length;i++){
+			if( i === strS.length){
+				num+=strS[strS.length-i]
+			}else{
+				num+=strS[strS.length-i]+'.'
+			}
+			
+		}
+		document.write(`正常顺序${str}`);
+		document.write('<br>')
+		document.write(`倒序${num}`)
+		document.write('<hr>')
+		//fourTwo
+		document.write('<h1>第二题</h1>')
+		var num1 = '1.23.43.5'
+		var str2 =''
+		for (let i=0;i<num1.length;i++){
+			if( i === num1.length-1){
+				str2+='*';   //替换最后一个字符
+			}else {
+				str2+=num1[i];
+			}
+		}
+		document.write(`正常ip${num1}`)
+		document.write(`隐藏后的ip${str2}`)
+		document.write('<hr>')
+		//fourThree
+		document.write('<h1>第三题</h1>')
+		let time = new Date();
+		let mon = ['一','二','三','四','五','六','七','八','九','十','十一','十二']
+		document.write(`${time.getFullYear()}年${mon[time.getMonth()]}月${time.getDate()}日,${time.getHours()}:${time.getMinutes()}:${time.getSeconds()},星期${time.getDay()}`)
+		document.write('<hr>')
+		//fourFour
+		document.write('<h1>第四题</h1>')
+		var str3 = prompt('请输入2-10个字符');
+		if(str3.length>=2 && str3.length<=10){
+			document.write(`你输入的字符为:${str3}`)
+			document.write('<p>字符串长度符合要求</p>')
+		}else{
+			document.write(`你输入的字符为:${str3}`)
+			document.write('<p>字符串长度不符合要求</p>')
+		}
+		document.write('<hr>')
+		// fiveOne
+		document.write('<h1>fiveOne</h1>');
+		let numA = Math.floor(Math.random()*9);
+		let numB = Math.floor(Math.random()*9);
+		let numC = Math.floor(Math.random()*9);
+		let numD = Math.floor(Math.random()*9);
+		document.write(`${numA}${numB}${numC}${numD}`);
+		document.write('<hr>')
+		//四则运算符
+		//方法一
+		document.write('<h1>四则运算符</h1>')
+		var result;
+		function count1(n1,n2,type) {
+			switch(type){
+				case "-" :
+					result=Number(n1)-Number(n2);
+					break;
+				case "+" :
+					result=Number(n1)+Number(n2);
+					break;
+				case "*":
+					result=Number(n1)*Number(n2);
+					break;
+				case "/":
+					if(n2!==0){
+						result=n1/n2;
+					}else{
+						alert('除数不能为0')
+					}
+					break;
+			}
+			return result;
+		}
+		 document.write('<input type="text" id="n1">')
+		 document.write('<select id="ff">')
+		 document.write('<option value="0">+</option>')
+		 document.write('<option value="1">-</option>')
+		 document.write('<option value="2">*</option>')
+		 document.write('<option value="3">/</option>')
+		 document.write('</select>')
+		 document.write('<input type="text" id="n2">')
+		 document.write('<button id="btn">=</button>')
+		 document.write('<input type="text" id="n3">')
+		 document.write('<p id="para"></p>')
+		 const n1 = document.getElementById('n1')
+		 const n2 = document.getElementById('n2');
+		 const n3 = document.querySelector('#n3')
+		 
+		 const para = document.getElementById('para');
+		 
+		 btn.addEventListener('click',function(){
+			 let n1value=Number(n1.value) ;				 //注意是点击后获取内容
+			 const btn = document.querySelector('#btn'); // 
+			 let n2value=Number(n2.value);
+			 let type = document.querySelector('#ff')
+			 let type1 = type.value;
+			 console.log(type1)
+			 if(n1value==='' || n2value===''){
+				 para.textContent='请把两个输入框填完整'
+				 n3.value='';
+			 }else if(isNaN(n1value) || isNaN(n2value))  {  //注意isNaN使用方法
+				para.textContent='您输入的不是数字类型'
+				n3.value='';
+			 }else if(type1 ==='0') {
+				 n3.value=`${n1value+n2value}`
+				 para.textContent='';
+			 }else if(type1 ==='1') {
+				 n3.value=`${n1value-n2value}`
+				 para.textContent='';
+			 }else if(type1 ==='2') {
+				 n3.value=`${n1value*n2value}`
+				 para.textContent='';
+			 }else if(type1 ==='3') {
+				 if(n2value == 0) {
+					 para.textContent='除数不能为0'
+				 }else{
+					 n3.value=`${n1value/n2value}`
+					 para.textContent='';
+				 }
+			 }
+			
+		 })
+		 document.write('<hr>')
+		 //时间更新
+		 document.write('<h1>时间更新</h1>')
+		 document.write('<p id="ParaTime"></p>')
+		 function dataTime() {
+			 let t = new Date();
+			 const ParaTime = document.querySelector('#ParaTime')
+			 let Year = t.getFullYear(); //获取年
+			 let Mon  = t.getMonth()+1;  //默认月份从0开始所以加1
+			 let Day  = t.getDay();		//获取日
+			 let Hour = t.getHours();	//获取时
+			 let Min  = t.getMinutes(); //获取分
+			 let s    = t.getSeconds(); //获取秒
+			 let Weekend = t.getDay();  //获取星期数
+			 switch(Weekend){  	//day函数默认1，2,3应该让他转换为汉字所以用switch
+			  case 1:  	
+			  Weekend='一';  
+			  break;  
+			  case 2:  
+			  Weekend='二';  
+			  break;  
+			  case 3:  
+			  Weekend='三';  
+			  break;  
+			  case 4:  
+			  Weekend='四';  
+			  break;  
+			  case 5:  
+			  Weekend='五';  
+			  break;  
+			  case 6:  
+			  Weekend='六';  
+			  break;  
+			  case 7:  
+			  Weekend='七';  
+			  break;  
+			  } 
+			  if(Min<10){
+				  ParaTime.innerText=`${Year}年${Mon}月${Day}日${Hour}时0${Min}分${s}秒星期${Weekend}`
+			  }else{ //为什么用innerText就可以更新时间而用textcont却不可以呢
+				  ParaTime.innerText=`${Year}年${Mon}月${Day}日${Hour}时${Min}分${s}秒星期${Weekend}`
+			  };  
+			  }  
+		 dataTime();
+		 setInterval(dataTime,1000)  //计时器里边第一个参数为实现方法，更新的毫秒数1000毫秒的一秒相当于每秒更新
+		</script>
+	</body>
+</html>
